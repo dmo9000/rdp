@@ -38,10 +38,18 @@ int parseProduct()
 
 int parseFactor()
 {
-    if (*x >= '0' && *x <= '9')
-    {
-        return *x++ - '0';
-    } else if (*x == '(') {
+		int sum1 = 0; 
+    int l = 0;
+
+    if (*x >= '0' && *x <= '9') {
+	    while (*x >= '0' && *x <= '9')
+	    {
+					sum1= (sum1* 10) + (*x - '0');
+					*x++;
+					l++;
+    	} 
+			return sum1;
+		} else if (*x == '(') {
         int sum;
         ++x; /* consume ( */
         sum = parseSum();

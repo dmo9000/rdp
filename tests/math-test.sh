@@ -5,7 +5,7 @@ if [ ! -x ./rdp ]; then
 	exit 1
 	fi
 
-for TESTFILE in `ls -1 tests/*.t`; do
+for TESTFILE in `ls -1v tests/*.t`; do
 	BAD_TEST=0
 	echo -n "Running test $TESTFILE: "
 	TESTSTRING=`sed -n 1p $TESTFILE`
