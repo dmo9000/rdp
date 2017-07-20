@@ -1,7 +1,8 @@
 #!/bin/sh
 
 if [ ! -x ./rdp ]; then
-	make
+	echo "please compile rdp first"
+	exit 1
 	fi
 
 for TESTFILE in `ls -1 tests/*.t`; do
