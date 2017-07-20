@@ -61,7 +61,7 @@ int main()
     int r = 0;
 //    x = "2*3+4*5";
 		gets(buffer);
-		x = &buffer;
+		x = (char *) &buffer;
     r = parseSum();
     printf ("%u\n", r);
     return 0;

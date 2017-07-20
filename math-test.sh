@@ -1,5 +1,9 @@
 #!/bin/sh
 
+if [ ! -x ./rdp ]; then
+	make
+	fi
+
 for TESTFILE in `ls -1 tests/*.t`; do
 	BAD_TEST=0
 	echo -n "Running test $TESTFILE: "
@@ -28,7 +32,6 @@ for TESTFILE in `ls -1 tests/*.t`; do
 		echo "test:     $TESTSTRING"
 		echo "result:   $RDP_TESTRESULT"
 		echo "expected: $TESTRESULT"
-		echo "(the test failed: result was $RDP_TESTRESULT - should heave been $BC_TESTRESULT)"
 		exit 1
 		fi
 	done	
