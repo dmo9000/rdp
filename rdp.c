@@ -3,7 +3,7 @@
 #include <sys/types.h>
 
 
-typedef int32_t mathRegister;
+typedef int64_t mathRegister;
 mathRegister parseSum();
 mathRegister parseProduct();
 mathRegister parseFactor();
@@ -68,7 +68,7 @@ int main()
 		gets(buffer);
 		x = (char *) &buffer;
     r = parseSum();
-    printf ("%u\n", r);
+    printf ("%llu\n", r);
     return 0;
 
 }
