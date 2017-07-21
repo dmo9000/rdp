@@ -1,21 +1,23 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <sys/types.h>
 
-int parseSum();
-int parseProduct();
-int parseFactor();
+
+typedef int32_t mathRegister;
+mathRegister parseSum();
+mathRegister parseProduct();
+mathRegister parseFactor();
 
 char *x;
 
 bool errorFlag = false;
 
-
-int parseSum()
+mathRegister parseSum()
 {
-    int pro1 = parseProduct();
+    mathRegister pro1 = parseProduct();
     while (*x == '+')
     {
-        int pro2;
+        mathRegister pro2;
         ++x;
         pro2 = parseProduct();
         pro1 = pro1 + pro2;
@@ -23,12 +25,12 @@ int parseSum()
     return pro1;
 }
 
-int parseProduct()
+mathRegister parseProduct()
 {
-    int fac1 = parseFactor();
+    mathRegister fac1 = parseFactor();
     while (*x == '*')
     {
-        int fac2;
+        mathRegister fac2;
         ++x;
         fac2 = parseFactor();
         fac1 = fac1 * fac2;
@@ -36,9 +38,9 @@ int parseProduct()
     return fac1;
 }
 
-int parseFactor()
+mathRegister parseFactor()
 {
-		int sum1 = 0; 
+		mathRegister sum1 = 0; 
     if (*x >= '0' && *x <= '9') {
 	    while (*x >= '0' && *x <= '9')
 	    {
@@ -47,7 +49,7 @@ int parseFactor()
     	} 
 			return sum1;
 		} else if (*x == '(') {
-        int sum;
+        mathRegister sum;
         ++x; /* consume ( */
         sum = parseSum();
         ++x; /* consume ) */
@@ -62,8 +64,7 @@ int parseFactor()
 int main()
 {
 		char buffer[80];
-    int r = 0;
-//    x = "2*3+4*5";
+    mathRegister r = 0;
 		gets(buffer);
 		x = (char *) &buffer;
     r = parseSum();
