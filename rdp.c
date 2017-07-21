@@ -39,14 +39,11 @@ int parseProduct()
 int parseFactor()
 {
 		int sum1 = 0; 
-    int l = 0;
-
     if (*x >= '0' && *x <= '9') {
 	    while (*x >= '0' && *x <= '9')
 	    {
 					sum1= (sum1* 10) + (*x - '0');
 					*x++;
-					l++;
     	} 
 			return sum1;
 		} else if (*x == '(') {
@@ -60,7 +57,6 @@ int parseFactor()
         errorFlag = true;
         return 0;
     }
-
 }
 
 int main()
